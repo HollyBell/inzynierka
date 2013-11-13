@@ -33,19 +33,18 @@
     <div class="container">
         <div class="jumbotron">
         </div>
-            <ul class="navbar navbar-inverse navbar-static-top">
+            <div class="navbar navbar-inverse">
                         <?php
         wp_nav_menu( array(
         'menu'              => 'Main-menu',
         'theme_location'    => 'Main-menu',
         'depth'             => 2,
-        'container'         => 'div',
-        'container_class'   => 'collapse navbar-collapse navbar-ex1-collapse',
+        'container'         => false,
         'menu_class'        => 'nav navbar-nav',
         'fallback_cb'       => 'wp_bootstrap_navwalker::fallback',
         'walker'            => new wp_bootstrap_navwalker())
     );?>
-            </ul>
+            </div>
          <div class="clear"></div>
        
          <div class="container">
