@@ -47,7 +47,7 @@ html {
 
 body {
     margin: 0;
-    background-color:#333333;
+    background-color:#CCC;
     font-family: Tahoma, Geneva, sans-serif;
 }
 
@@ -311,7 +311,7 @@ body {
   font-size: 14px;
   line-height: 1.428571429;
   color: #333333;
-  background-color:#333333;
+  background-color:#CCC;
   font-family: Tahoma, Geneva, sans-serif;
 }
 
@@ -786,7 +786,6 @@ pre code {
 .container {
   margin-right: auto;
   margin-left: auto;
-  background:maroon;
 }
 
 .container:before,
@@ -810,6 +809,7 @@ pre code {
 }
 
 .row {
+  margin-top:20px;
   margin-right: 0px;
   margin-left: 0px;
 }
@@ -884,8 +884,10 @@ pre code {
 .col-lg-12 {
   position: relative;
   min-height: 1px;
-  padding-right: 15px;
-  padding-left: 15px;
+  padding-right: 0px;
+  padding-left: 0px;
+  border-radius: 10px 10px 0px 0px;
+  background: #666;
 }
 
 .col-xs-1,
@@ -1483,7 +1485,8 @@ pre code {
     width: 66.66666666666666%;
   }
   .col-lg-7 {
-    width: 58.333333333333336%;
+    width: 64.333333333333336%;
+    background: #666;
   }
   .col-lg-6 {
     width: 50%;
@@ -1493,6 +1496,7 @@ pre code {
   }
   .col-lg-4 {
     width: 33.33333333333333%;
+    background: #666;
   }
   .col-lg-3 {
     width: 25%;
@@ -1615,7 +1619,7 @@ pre code {
     margin-left: 16.666666666666664%;
   }
   .col-lg-offset-1 {
-    margin-left: 8.333333333333332%;
+    margin-left: 2.333333333333332%;
   }
   .col-lg-offset-0 {
     margin-left: 0;
@@ -5232,13 +5236,9 @@ a.list-group-item.active > .badge,
   margin-left: 3px;
 }
 
-.jumbotron {    
-  font-size: 21px;
+.jumbotron {   
   font-weight: 200;
   color: inherit;
-  height:150px;
-  background-image: url('../images/logo.jpg');
-  background-repeat:no-repeat;
 }
 
 .jumbotron h1 {
@@ -5256,11 +5256,9 @@ a.list-group-item.active > .badge,
 
 @media screen and (min-width: 768px) {
   .jumbotron {
-    padding-top: 48px;
+    padding-top: 0px;
   }
   .container .jumbotron {
-    padding-right: 60px;
-    padding-left: 60px;
   }
   .jumbotron h1 {
     font-size: 63px;
@@ -6398,7 +6396,7 @@ button.close {
   display: block;
   height: auto;
   max-width: 100%;
-  line-height: 1;
+  line-height: 0;
 }
 
 .carousel-inner > .active,
@@ -6454,6 +6452,9 @@ button.close {
 }
 
 .carousel-control.left {
+    padding-top: 10%;
+  padding-left: 20px;
+  font-size: 50px;
   background-image: -webkit-gradient(linear, 0 top, 100% top, from(rgba(0, 0, 0, 0.5)), to(rgba(0, 0, 0, 0.0001)));
   background-image: -webkit-linear-gradient(left, color-stop(rgba(0, 0, 0, 0.5) 0), color-stop(rgba(0, 0, 0, 0.0001) 100%));
   background-image: -moz-linear-gradient(left, rgba(0, 0, 0, 0.5) 0, rgba(0, 0, 0, 0.0001) 100%);
@@ -6465,6 +6466,9 @@ button.close {
 .carousel-control.right {
   right: 0;
   left: auto;
+  padding-top: 10%;
+  padding-left: 20px;
+  font-size: 50px;
   background-image: -webkit-gradient(linear, 0 top, 100% top, from(rgba(0, 0, 0, 0.0001)), to(rgba(0, 0, 0, 0.5)));
   background-image: -webkit-linear-gradient(left, color-stop(rgba(0, 0, 0, 0.0001) 0), color-stop(rgba(0, 0, 0, 0.5) 100%));
   background-image: -moz-linear-gradient(left, rgba(0, 0, 0, 0.0001) 0, rgba(0, 0, 0, 0.5) 100%);
@@ -7105,4 +7109,39 @@ td.visible-print {
 
 .clear{
     clear:both;
+}
+
+.logo{
+    background-color: #003300;
+    border-radius: 10px 10px 0px 0px;
+}
+
+.logo h1{
+    font-size:2em;
+    color: red;
+    padding: 0.5em;
+}
+
+.box-head{
+    background-color: #003300;
+    border-radius: 10px 10px 0px 0px;
+}
+
+.box-head h3{
+    margin-top: 0px;
+    padding:10px 20px 10px 20px;
+    color:#fff;
+    font-weight: 100;
+}
+
+.box-content{
+    padding:10px 15px;
+    color:#CCFFCC;
+}
+
+.footer{
+    margin-top:20px;
+    background:#666;
+    padding:20px 0;
+    color:#CCFFCC;
 }
