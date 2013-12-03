@@ -8,15 +8,12 @@
  */
 
 include_once dirname( __FILE__ ) . '/widget.php';
+wp_enqueue_script( 'jquery' );
+wp_register_script( 'ajax_handler', plugin_dir_url( __FILE__ ) . '/ajax_handler.js');
+wp_enqueue_script( 'ajax_handler' );
 
 class Guestbook
-{
-    protected $_data;
-    
-    public function __construct($data) {
-        $this->_data = $data;
-    }
-    
+{   
     public function install()
     {
         global $wpdb;
@@ -29,27 +26,53 @@ class Guestbook
             email varchar(255) DEFAULT NULL,
             content text DEFAULT NULL,
             UNIQUE KEY id (id)
-        );";
+        )DEFAULT CHARACTER SET utf8 COLLATE utf8_general_ci;";
 
         require_once( ABSPATH . 'wp-admin/includes/upgrade.php' );
         dbDelta( $sql );
     }
     
-    public function validateForm()
+    public function saveEntry()
     {
+        global $wpdb;
         
+        $data = validateForm($_POST['data']);
+        if(is_array($data))
+        {
+            $wpdb->query ("SET NAMES 'utf8'");
+            $wpdb->insert($wpdb->prefix.'guestbook', $data);
+            
+            wp_send_json(true);
+        }
+        else
+        {
+            wp_send_json_error($data);
+        }
     }
     
-    public function save()
+    public function loadEntry()
     {
-        
+        global $wpdb;
+        $data = $wpdb->get_results( "SELECT * FROM ".$wpdb->prefix."guestbook WHERE id > ".$_POST['data']['id'] );
+        wp_send_json($data);
     }
 }
-if($_POST['Scout_Guestbook']['save'])
-{
-    $guestbook = new Guestbook($_POST['Scout_Guestbook']);
-    $guestbook ->validateForm();
-    $guestbook ->save();
-}
 
-register_activation_hook( __FILE__, array( 'Guestbook', 'install' ) );
+    function validateForm($data)
+    {
+        if(!filter_var($data['email'], FILTER_VALIDATE_EMAIL))
+        {
+            return 'This is not email!';
+        }
+        $data['content'] = preg_replace('/\b(https?|ftp|file):\/\/[-A-Z0-9+&@#\/%?=~_|$!:,.;]*[A-Z0-9+&@#\/%=~_|$]/i', '', $data['content']);
+        
+        $data['content'] = trim($data['content']);
+        $data['email'] = trim($data['email']);
+        $data['nickname'] = trim($data['nickname']);
+        return $data;
+    }
+
+register_activation_hook( __FILE__, array( 'Guestbook', 'install' ));
+
+add_action( 'wp_ajax_save_guestbook', array('Guestbook', 'saveEntry'));
+add_action( 'wp_ajax_load_guestbook', array('Guestbook', 'loadEntry'));

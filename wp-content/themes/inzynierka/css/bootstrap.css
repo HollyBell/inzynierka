@@ -7145,3 +7145,16 @@ td.visible-print {
     padding:20px 0;
     color:#CCFFCC;
 }
+
+.guestbook_nickname{
+    float:left;
+}
+
+.guestbook_email{
+    float:right;
+}
+
+.guestbook_content{
+    margin:20px;
+    color:#FFF;
+}

@@ -65,3 +65,16 @@ function sidebar_widgets_init() {
 	) );
 }
 add_action( 'widgets_init', 'sidebar_widgets_init' );
+
+//add ajaxurl
+function add_ajaxurl() {
+    ?>
+
+    <script type="text/javascript">
+            var ajaxurl = '<?php echo admin_url('admin-ajax.php'); ?>';
+    </script>
+<?php
+}
+
+//add ajax action
+add_action('wp_head', 'add_ajaxurl');
