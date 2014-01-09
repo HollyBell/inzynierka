@@ -35,8 +35,9 @@ class Guestbook
     public function saveEntry()
     {
         global $wpdb;
-        
-        $data = validateForm($_POST['data']);
+        //?!?!?!?!?!?!?!
+        $test = new Guestbook();
+        $data = $test->_validateForm($_POST['data']);
         if(is_array($data))
         {
             $wpdb->query ("SET NAMES 'utf8'");
@@ -56,9 +57,8 @@ class Guestbook
         $data = $wpdb->get_results( "SELECT * FROM ".$wpdb->prefix."guestbook WHERE id > ".$_POST['data']['id'] );
         wp_send_json($data);
     }
-}
-
-    function validateForm($data)
+    
+    protected function _validateForm($data)
     {
         if(!filter_var($data['email'], FILTER_VALIDATE_EMAIL))
         {
@@ -71,6 +71,8 @@ class Guestbook
         $data['nickname'] = trim($data['nickname']);
         return $data;
     }
+}
+
 
 register_activation_hook( __FILE__, array( 'Guestbook', 'install' ));
 

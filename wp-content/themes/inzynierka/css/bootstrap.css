@@ -7,7 +7,8 @@
  */
 
 /*! normalize.css v2.1.3 | MIT License | git.io/normalize */
-
+input:hover{background-color: #fff !important; }
+input:focus{background-color: #fff !important; }
 article,
 aside,
 details,
@@ -522,7 +523,7 @@ h6 .small,
 h1,
 h2,
 h3 {
-  margin-top: 20px;
+ // margin-top: 20px;
   margin-bottom: 10px;
 }
 
@@ -886,7 +887,6 @@ pre code {
   min-height: 1px;
   padding-right: 0px;
   padding-left: 0px;
-  border-radius: 10px 10px 0px 0px;
   background: #666;
 }
 
@@ -4555,7 +4555,7 @@ textarea.input-group-sm > .input-group-btn > .btn {
     float: none;
     width: auto;
     margin-top: 0;
-    background-color: transparent;
+    background-color: #444;
     border: 0;
     box-shadow: none;
   }
@@ -7114,6 +7114,7 @@ td.visible-print {
 .logo{
     background-color: #003300;
     border-radius: 10px 10px 0px 0px;
+    margin-bottom: 10px;
 }
 
 .logo h1{
@@ -7125,24 +7126,22 @@ td.visible-print {
 .box-head{
     background-color: #003300;
     border-radius: 10px 10px 0px 0px;
-}
-
-.box-head h3{
     margin-top: 0px;
-    padding:10px 20px 10px 20px;
+    padding:2px 20px 2px 20px;
     color:#fff;
     font-weight: 100;
 }
 
 .box-content{
     padding:10px 15px;
-    color:#CCFFCC;
+    color:#ffffff;
 }
 
 .footer{
     margin-top:20px;
     background:#666;
-    padding:20px 0;
+    padding-top:5px;
+    text-align: center;
     color:#CCFFCC;
 }
 
@@ -7158,3 +7157,47 @@ td.visible-print {
     margin:20px;
     color:#FFF;
 }
+
+.rounded-corner{
+    border-radius: 10px 10px 0px 0px;
+}
+
+.content-box{
+    padding:10px;
+}
+
+.ignore-rounded{
+    border-radius: 0px !important;
+}
+
+.vertical_menu{
+    list-style: none;
+    padding:0px;
+}
+
+.vertical_menu li{
+    background:#aaa;
+    padding:10px;
+    text-align: center;
+    font-size:18px;
+    letter-spacing:1px;
+    transition:0.5s ease;
+}
+.vertical_menu li:hover{
+    background:#bbb;
+    transition:1s ease;
+    
+}
+.vertical_menu li a{
+    color:#333;
+    font-weight: bold;
+}
+.vertical_menu li:hover a{
+    color:#000;
+}
+
+#wpmem_reg label.text, #wpmem_reg label.checkbox, #wpmem_reg label.select, #wpmem_login label {margin-bottom: 20px;}
+
+#wpmem_reg .div_text, #wpmem_reg .div_textarea, #wpmem_reg .div_select, #wpmem_login .div_text, #wpmem_reg .div_checkbox {padding: 12px 0 !important;}
+
+#wpmem_msg, .wpmem_msg {background: none !important;}

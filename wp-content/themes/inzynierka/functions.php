@@ -1,5 +1,5 @@
 <?php
-
+show_admin_bar(false); 
 function register_css_and_style()
 {
     wp_register_script( 'bootstrap.min', get_template_directory_uri() . '/js/bootstrap.min.js');
@@ -20,7 +20,7 @@ function register_my_menus() {
   register_nav_menus(
     array(
       'Main-menu' => __( 'Main Menu' ),
-      'Documents-menu' => __( 'Extra Menu' ), 
+      'Documents-menu' => __( 'Documents Menu' ), 
       'Teams-menu' => __('Teams Menu'),
       'Gallery-menu' => __('Gallery Menu'),
       'Informations-menu' => ('Informations Menu'),
@@ -40,9 +40,9 @@ function acl_function()
 }
 add_action('template_redirect', 'acl_function');
 
-function bottom_widgets_init() {
+function widgets_init() {
 
-	register_sidebar( array(
+    register_sidebar( array(
 		'name' => 'Bottom widget area',
 		'id' => 'bottom_widget_area',
 		'before_widget' => '',
@@ -50,21 +50,24 @@ function bottom_widgets_init() {
 		'before_title' => '',
 		'after_title' => '',
 	) );
-}
-add_action( 'widgets_init', 'bottom_widgets_init' );
-
-function sidebar_widgets_init() {
-
-	register_sidebar( array(
+        register_sidebar( array(
+		'name' => 'Forum widget area',
+		'id' => 'forum_widget_area',
+		'before_widget' => '<div class="col-lg-3">',
+		'after_widget' => '</div>',
+		'before_title' => '<h4 class="box-head ignore-rounded">',
+		'after_title' => '</h4>',
+	) );
+        register_sidebar( array(
 		'name' => 'Sidebar widget area',
 		'id' => 'sidebar_widget_area',
 		'before_widget' => '',
-		'after_widget' => '',
-		'before_title' => '',
-		'after_title' => '',
+		'after_widget' => '</div>',
+		'before_title' => '<div class="box-head ignore-rounded"><h4>',
+		'after_title' => '</h4></div><div class="box-content">',
 	) );
 }
-add_action( 'widgets_init', 'sidebar_widgets_init' );
+add_action( 'widgets_init', 'widgets_init' );
 
 //add ajaxurl
 function add_ajaxurl() {

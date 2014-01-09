@@ -1,5 +1,6 @@
 jQuery(document).ready(function(){
     loadData(0);
+    setInterval(function(){loadData(jQuery('.guestbook_id').val())},30000);
     jQuery('button.save-guestbook').on('click', function(event){
         event.preventDefault();
         jQuery.post(
@@ -16,7 +17,6 @@ jQuery(document).ready(function(){
                 if(response.success != false)
                 {
                     loadData(jQuery('.guestbook_id').val());
-                    console.log('t');
                 }
             }
         );
@@ -32,9 +32,12 @@ function loadData(id)
                 'data':{id:id}
             }, 
             function(response){
-                for(key in response)
+                if (response != 0)
                 {
-                    jQuery('.guestbook-content').prepend('<input type="hidden" class="guestbook_id" value="'+response[key].id+'" /><div class="guestbook_nickname">'+response[key].nickname+'</div><div class="guestbook_email">'+response[key].email+'</div><div class="clear"></div><div class="guestbook_content">'+response[key].content+'</div><hr />');
+                    for(key in response)
+                    {
+                        jQuery('.guestbook-content').prepend('<input type="hidden" class="guestbook_id" value="'+response[key].id+'" /><div class="guestbook_nickname">'+response[key].nickname+'</div><div class="guestbook_email">'+response[key].email+'</div><div class="clear"></div><div class="guestbook_content">'+response[key].content+'</div><hr />');
+                    }
                 }
                 
             }
