@@ -36,8 +36,7 @@ class Guestbook
     {
         global $wpdb;
         //?!?!?!?!?!?!?!
-        $test = new Guestbook();
-        $data = $test->_validateForm($_POST['data']);
+        $data = $this->_validateForm($_POST['data']);
         if(is_array($data))
         {
             $wpdb->query ("SET NAMES 'utf8'");
@@ -75,6 +74,6 @@ class Guestbook
 
 
 register_activation_hook( __FILE__, array( 'Guestbook', 'install' ));
-
-add_action( 'wp_ajax_save_guestbook', array('Guestbook', 'saveEntry'));
+$guestbook = new Guestbook;
+add_action( 'wp_ajax_save_guestbook', array($guestbook, 'saveEntry'));
 add_action( 'wp_ajax_load_guestbook', array('Guestbook', 'loadEntry'));
